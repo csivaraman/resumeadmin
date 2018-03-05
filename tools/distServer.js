@@ -8,18 +8,27 @@ import compression from 'compression';
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(compression());
-app.use(express.static('dist'));
+express()
+  .use(express.static(path.join(__dirname, 'dist')))
+  // .set('views', path.join(__dirname, 'views'))
+  // .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('../dist/index.html'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+// app.use(compression());
+// app.use(express.static('dist'));
 
-app.listen(port, function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    open(`http://localhost:${port}`);
-    
-  }
-});
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../dist/index.html'));
+// });
+
+// app.listen(port, function(err) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     open(`http://localhost:${port}`);
+
+//   }
+// });
+
+
