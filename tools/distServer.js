@@ -13,7 +13,7 @@ express()
   // .set('views', path.join(__dirname, 'views'))
   // .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('../dist/index.html'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  .listen(port, () => console.log(`Listening on ${ port }`))
 
 // app.use(compression());
 // app.use(express.static('dist'));
