@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import * as loginActions from '../../actions/loginActions';
-import LoginForm from './LoginForm';
+import LoginForm_Old from './../backup/LoginForm_Old';
 import toastr from 'toastr';
 
 class LoginPage extends React.Component {
@@ -79,7 +79,7 @@ class LoginPage extends React.Component {
 
     render() {
         return (            
-            <LoginForm
+            <LoginForm_Old
                 submitted={this.state.submitted}
                 username={this.state.username}
                 password={this.state.password}

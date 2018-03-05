@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ResumeActions from '../../actions/resumeActions';
-import ResumeForm from './ResumeForm';
+import ResumeForm_Old from './../backup/ManageResumePage_Old';
 import toastr from 'toastr';
 
 export class ManageResumePage_Old extends React.Component {
@@ -115,7 +115,7 @@ export class ManageResumePage_Old extends React.Component {
 
     render() {
         return (
-            <ResumeForm
+            <ResumeForm_Old
                 resume={this.state.resume}
                 onChange={this.updateResumeState}
                 onSave={this.saveResume}

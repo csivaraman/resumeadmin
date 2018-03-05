@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput_Old from '../backup/TextInput_Old'
+import TextInput_Old from '../backup/TextInput_Old';
 import SelectInput from '../common/SelectInput';
 
 const CourseForm = ({ course, allAuthors, onSave, onChange, saving, errors }) => {

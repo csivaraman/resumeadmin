@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../actions/loginActions';
-import RegisterForm from './RegisterForm';
+import RegisterForm_Old from './../backup/RegisterForm_Old';
 import toastr from 'toastr';
 
 class RegisterPage extends React.Component {
@@ -93,7 +93,7 @@ class RegisterPage extends React.Component {
 
     render() {
         return (
-            <RegisterForm
+            <RegisterForm_Old
                 submitted={this.state.submitted}
                 user={this.state.user}
                 onChange={this.handleChange}
