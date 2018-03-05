@@ -12,8 +12,8 @@ express()
   .use(express.static(path.join(__dirname, 'dist')))
   // .set('views', path.join(__dirname, 'views'))
   // .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('../dist/index.html'))
-  .listen(port, () => console.log(`Listening on ${ port }`))
+  .get('*', (req, res) => res.render('../dist/index.html'))
+  .listen(port, () => console.log(`Listening on ${ port }`));
 
 // app.use(compression());
 // app.use(express.static('dist'));
