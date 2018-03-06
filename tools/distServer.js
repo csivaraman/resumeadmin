@@ -7,12 +7,13 @@ import compression from 'compression';
 
 //"start": "npm run build prod && node ./dist/bundle.js",
 // "start": "npm-run-all --parallel test:watch open:src lint:watch",
-const host = '0.0.0.0';
-//const host = 'localhost';
+let host = '0.0.0.0';
 const port = process.env.PORT || 3000;
+if(port==3000)
+  host = 'localhost';
+  
 const app = express();
 
-//set package config start script to: npm run build && node ./dist/bundle.js
 app.use(compression());
 app.use(express.static('dist'));
 
