@@ -35,8 +35,8 @@ export default {
   ],
   module: {
     loaders: [
-      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
+      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},      
+      {test: /(\.css)$/, loaders: ['style', 'css']},     
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
       {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
       {test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000"},
