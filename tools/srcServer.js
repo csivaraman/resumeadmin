@@ -6,6 +6,7 @@ import open from 'open';
 
 /* eslint-disable no-console */
 
+// set package json start script to: npm-run-all --parallel test:watch open:src lint:watch
 const port = 3000;
 const app = express();
 const compiler = webpack(config);

@@ -12,6 +12,7 @@ const host = 'localhost';
 const port = process.env.PORT || 3000;
 const app = express();
 
+//set package config start script to: npm run build && node ./dist/bundle.js
 app.use(compression());
 app.use(express.static('dist'));
 
