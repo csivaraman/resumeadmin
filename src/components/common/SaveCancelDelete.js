@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const SaveCancelDelete = ({ onSave, onDelete, onCancel, saving, deleting, saveDisabled, deleteDisabled }) => {
-    return (
+    return (        
         <div className="row">
             <div className="col-xs-2">
                 <input
@@ -9,7 +9,7 @@ const SaveCancelDelete = ({ onSave, onDelete, onCancel, saving, deleting, saveDi
                     type="submit"
                     disabled={saveDisabled}
                     value={saving ? 'Saving...' : 'Save'}
-                    className="btn btn-primary btn-block"
+                    className="btn btn-primary"
                     onClick={onSave} />
             </div>
 
@@ -21,7 +21,7 @@ const SaveCancelDelete = ({ onSave, onDelete, onCancel, saving, deleting, saveDi
                         type="submit"
                         disabled={deleteDisabled}
                         value={deleting ? 'Deleting...' : 'Delete'}
-                        className="btn btn-primary btn-block"
+                        className="btn btn-primary"
                         onClick={onDelete} />
                 </div>
             }
@@ -30,7 +30,7 @@ const SaveCancelDelete = ({ onSave, onDelete, onCancel, saving, deleting, saveDi
                 <input
                     type="submit"
                     value="Cancel"
-                    className="btn btn-primary btn-block"
+                    className="btn btn-primary"
                     onClick={onCancel} />
             </div>
         </div>

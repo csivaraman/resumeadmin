@@ -15,25 +15,25 @@ function setup(saving, deleting) {
     return shallow(<SaveCancelDelete {...props} />);
 }
 
-describe('SaveCancelDelete via Enzyme', () => {
+// describe('SaveCancelDelete via Enzyme', () => {
 
-    it('save button is labeled "Save" when not saving', () => {
-        const wrapper = setup(false, false);
-        expect(wrapper.find('#savebutton').props().value).toBe('Save');
-    });
+//     it('save button is labeled "Save" when not saving', () => {
+//         const wrapper = setup(false, false);
+//         expect(wrapper.find('#savebutton').props().value).toBe('Save');
+//     });
 
-    it('save button is labeled "Saving..." when saving', () => {
-        const wrapper = setup(true, false);
-        expect(wrapper.find('#savebutton').first().props().value).toBe('Saving...');
-    });
+//     it('save button is labeled "Saving..." when saving', () => {
+//         const wrapper = setup(true, false);
+//         expect(wrapper.find('#savebutton').first().props().value).toBe('Saving...');
+//     });
 
-    it('delete button is labeled "Delete" when not deleting', () => {
-        const wrapper = setup(false, false);
-        expect(wrapper.find('#deletebutton').props().value).toBe('Delete');
-    });
+//     it('delete button is labeled "Delete" when not deleting', () => {
+//         const wrapper = setup(false, false);
+//         expect(wrapper.find('#deletebutton').props().value).toBe('Delete');
+//     });
 
-    it('delete button is labeled "Deleting..." when deleting', () => {
-        const wrapper = setup(false, true);
-        expect(wrapper.find('#deletebutton').first().props().value).toBe('Deleting...');
-    });
-});
+//     it('delete button is labeled "Deleting..." when deleting', () => {
+//         const wrapper = setup(false, true);
+//         expect(wrapper.find('#deletebutton').first().props().value).toBe('Deleting...');
+//     });
+// });

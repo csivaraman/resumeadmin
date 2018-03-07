@@ -1,6 +1,7 @@
 import delay from './delay';
 import HelperApi from './helperApi';
 import users from './../data/user-data';
+let bcrypt = require('bcryptjs');
 
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
@@ -8,10 +9,9 @@ import users from './../data/user-data';
 
 class LoginApi {
 
-    static isAuthenticated()
-    {
+    static isAuthenticated() {
         let user = JSON.parse(localStorage.getItem('user')) || null;
-        return user!=null;
+        return user != null;
     }
 
     static register(newUser) {
@@ -27,9 +27,15 @@ class LoginApi {
 
                 // save new user
                 newUser.id = HelperApi.generateNewId(users);
-                users.push(newUser);
-                                
-                resolve(newUser);
+
+                // hash password   
+                bcrypt.hash(newUser.password, 10, (err, hash) => {
+                    newUser.password = hash;
+                    users.push(newUser);
+
+                    resolve(newUser);
+                });                           
+                               
             }, delay);
         });
     }
@@ -37,19 +43,28 @@ class LoginApi {
     static login(username, password) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                // find if any user matches login credentials
+                // Get the user info based on user name
                 let filteredUsers = users.filter(user => {
-                    return user.username === username && user.password === password;
+                    return user.username === username;
                 });
 
                 if (filteredUsers.length) {
                     let user = filteredUsers[0];
-                    localStorage.setItem('user', JSON.stringify(user));
-                    resolve(user);
+                    
+                    bcrypt.compare(password, user.password).then(res=> {
+                        if (res == true) {                            
+                            localStorage.setItem('user', JSON.stringify(user));
+                            resolve(user);
+                        } else {
+                            reject('Username or password is incorrect');
+                        }
+                    }).catch(error => {
+                        reject(error);
+                    });                    
                 }
                 else {
                     // else return error
-                    reject('Username or password is incorrect');
+                    reject('Username is incorrect');
                 }
 
             }, delay);

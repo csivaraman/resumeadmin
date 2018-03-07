@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react';
 import Header from './../nav/Header';
-import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
-import * as loginActions from '../../actions/loginActions';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as loginActions from '../../actions/loginActions';
+import toastr from 'toastr';
 
 class HomePage extends React.Component {
 
   constructor(props, context) {
-    super(props, context);        
+    super(props, context);    
+    
+    this.doLogOut = this.doLogOut.bind(this);
   }
 
   componentDidMount() {
@@ -16,13 +18,24 @@ class HomePage extends React.Component {
     let isAuth = this.props.actions.isAuthenticated();
 
     if (!isAuth)
-      browserHistory.replace("/login");
+    this.context.router.push('/Login');
   }
   
+  doLogOut(event) {
+
+    event.preventDefault();
+
+    this.props.actions.logout().then(() => {
+      this.context.router.push('/');
+    }).catch(error => {
+
+    });
+  }
+
   render() {
     return (
       <div className="container-fluid">
-        <Header loading={this.props.loading}/>
+        <Header loading={this.props.loading} onLogout={this.doLogOut}/>
         {this.props.children}
       </div>
     );
@@ -33,6 +46,11 @@ HomePage.propTypes = {
   children: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired
+};
+
+//Pull in the React Router context so router is available on this.context.router.
+HomePage.contextTypes = {
+  router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

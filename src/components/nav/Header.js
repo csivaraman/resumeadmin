@@ -1,25 +1,41 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import LoadingDots from './../common/LoadingDots';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-const Header = ({ loading }) => {
+const Header = ({ loading, onLogout }) => {
   return (
-    <nav className="navbar navbar-default" role="navigation">
-      <ul className="nav navbar-nav">
-        <li className="nav-item">
-          <Link to="/index/resumes"> Resume</Link>
-        </li>        
-      </ul>
-      {loading && <LoadingDots interval={100} dots={20} />}
-      <ul className="nav navbar-nav navbar-right space-right">
-        <li><a>csivaraman</a></li>
-      </ul>
-    </nav>
+    <Navbar collapseOnSelect fluid staticTop>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <Link to="/">Resume Admin</Link>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem href="/index/resumes">
+            <Link to="/index/resumes"> Resumes </Link>
+          </NavItem>
+          <NavItem eventKey={2}>
+            {loading && <LoadingDots interval={100} dots={20} />}
+          </NavItem>
+        </Nav>
+        <Nav pullRight>
+          <NavDropdown eventKey={3} title="csivaraman" id="basic-nav-dropdown">
+            <MenuItem eventKey={3.1} onClick={onLogout}>
+              Logout
+            </MenuItem>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>  
   );
 };
 
 Header.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  onLogout: PropTypes.func
 };
 
 export default Header;

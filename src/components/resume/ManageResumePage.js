@@ -59,9 +59,9 @@ export class ManageResumePage extends React.Component {
 
         this.setState({ saving: true });
         return this.props.actions.saveResume(resume).then(
-            () => {
+            () => {                
                 this.redirect('save');
-            }).catch(error => {
+            }).catch(error => {                
                 toastr.error(error);
                 this.setState({ saving: false });
             });

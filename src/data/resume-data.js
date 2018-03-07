@@ -1,4 +1,4 @@
-const resumes = [{
+let resumes = [{
     id: 1,
     title: 'Chandrasekar\'s Resume',
     description: 'Resume for Software Engineer role',

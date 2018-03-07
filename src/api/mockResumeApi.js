@@ -16,8 +16,8 @@ class resumeApi {
     });
   }
 
-  static saveResume(resume) {
-    resume = Object.assign({}, resume); // to avoid manipulating object passed in.
+  static saveResume(resume) {    
+    resume = Object.assign({}, resume); // to avoid manipulating object passed in.        
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
@@ -27,8 +27,8 @@ class resumeApi {
         }
 
         if (resume.id) {
-          const existingResumeIndex = resumes.findIndex(a => a.id == resume.id);
-          resumes.splice(existingResumeIndex, 1, resume);
+          const existingResumeIndex = resumes.findIndex(a => a.id == resume.id);          
+          resumes.splice(existingResumeIndex, 1, resume);                    
         } else {
           //Just simulating creation here.
           //The server would generate ids for new Resume items in a real app.
