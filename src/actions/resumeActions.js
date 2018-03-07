@@ -18,6 +18,7 @@ export function deleteResumeSuccess(resume) {
     return { type: types.DELETE_RESUME_SUCCESS, resume };
 }
 
+
 export function loadResumes() {
     return function (dispatch) {
         dispatch(beginAjaxCall());
