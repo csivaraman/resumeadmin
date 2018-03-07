@@ -39,7 +39,7 @@ export function register(user) {
         return loginApi.register(user).then(user => {            
             dispatch(registerSuccess(user));
         }).catch(error => {            
-            dispatch(ajaxCallError);
+            dispatch(ajaxCallError());
             throw (error);
         });
     };
@@ -50,8 +50,8 @@ export function login(username, password) {
         dispatch(beginAjaxCall());
         return loginApi.login(username, password).then(user => {
             dispatch(loginSuccess(user));
-        }).catch(error => {            
-            dispatch(ajaxCallError);
+        }).catch(error => {                    
+            dispatch(ajaxCallError());
             throw (error);
         });
     };
@@ -63,7 +63,7 @@ export function logout() {
         return loginApi.logout().then(() => {
             dispatch(logoutSuccess());
         }).catch(error => {
-            dispatch(ajaxCallError);
+            dispatch(ajaxCallError());
             throw (error);
         });
     };
@@ -75,7 +75,7 @@ export function getAllUsers() {
         return loginApi.getAllUsers().then(users => {
             dispatch(getAllUsersSuccess(users));
         }).catch(error => {
-            dispatch(ajaxCallError);
+            dispatch(ajaxCallError());
             throw (error);
         });
     };
@@ -87,7 +87,7 @@ export function deleteUser(id) {
         return loginApi.deleteUser(id).then(user => {
             dispatch(deleteUserSuccess(user));
         }).catch(error => {
-            dispatch(ajaxCallError);
+            dispatch(ajaxCallError());
             throw (error);
         });
     };

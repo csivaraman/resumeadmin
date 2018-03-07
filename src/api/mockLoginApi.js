@@ -35,7 +35,7 @@ class LoginApi {
 
                     resolve(newUser);
                 });                           
-                               
+
             }, delay);
         });
     }
@@ -55,7 +55,7 @@ class LoginApi {
                         if (res == true) {                            
                             localStorage.setItem('user', JSON.stringify(user));
                             resolve(user);
-                        } else {
+                        } else {                            
                             reject('Username or password is incorrect');
                         }
                     }).catch(error => {
@@ -63,7 +63,7 @@ class LoginApi {
                     });                    
                 }
                 else {
-                    // else return error
+                    // else return error                    
                     reject('Username is incorrect');
                 }
 

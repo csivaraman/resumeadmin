@@ -24,7 +24,7 @@ export function loadResumes() {
         return resumeApi.getAllResumes().then(resumes => {
             dispatch(loadResumesSuccess(resumes));
         }).catch(error => {
-            dispatch(ajaxCallError);
+            dispatch(ajaxCallError());
             throw (error);
         });
     };
@@ -37,7 +37,7 @@ export function saveResume(resume) {
             resume.id ? dispatch(updateResumeSuccess(savedResume)) :
                 dispatch(createResumeSuccess(savedResume));
         }).catch(error => {
-            dispatch(ajaxCallError);
+            dispatch(ajaxCallError());
             throw (error);
         });
     };
@@ -49,7 +49,7 @@ export function deleteResume(resume) {
       return resumeApi.deleteResume(resume).then(deletedResume => {          
         dispatch(deleteResumeSuccess(deletedResume));
       }).catch(error => {
-        dispatch(ajaxCallError(error));
+        dispatch(ajaxCallError());
         throw(error);
       });
     };
