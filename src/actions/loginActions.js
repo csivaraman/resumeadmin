@@ -27,9 +27,9 @@ export function deleteUserSuccess(user) {
 }
 
 
-export function isAuthenticated() {
+export function getAuthenticatedUser() {
     return function (dispatch) {
-        return loginApi.isAuthenticated();
+        return loginApi.getAuthenticatedUser();
     };
 }
 

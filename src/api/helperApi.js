@@ -1,7 +1,8 @@
 class HelperApi {
 
-    static generateNewId(items) {
-        return items.length ? Math.max(...items.map(item => item.id)) + 1 : 1;
+    static generateNewId(items) {        
+        let length = items.length ? Math.max(...items.map(item => item.id)) + 1 : 1;        
+        return length;
       }
 }
 

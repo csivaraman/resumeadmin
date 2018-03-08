@@ -13,9 +13,9 @@ class LoginPage extends React.Component {
 
     componentDidMount() {
         // Redirect user to home page if authenticated
-        let isAuth = this.props.actions.isAuthenticated();
+        let authUser = this.props.actions.getAuthenticatedUser();
 
-        if (isAuth)
+        if (authUser && authUser.username)
             browserHistory.replace("/index");
     }
 

@@ -9,18 +9,24 @@ class HomePage extends React.Component {
 
   constructor(props, context) {
     super(props, context);    
-    
+
+    this.state = {
+      user: {}
+    };
+
     this.doLogOut = this.doLogOut.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // redirect user to login page if not authenticated
-    let isAuth = this.props.actions.isAuthenticated();
+    let authUser = this.props.actions.getAuthenticatedUser();    
 
-    if (!isAuth)
-    this.context.router.push('/Login');
+    if (!authUser || !authUser.username)
+      this.context.router.push('/Login');
+
+    this.setState({user: authUser});
   }
-  
+
   doLogOut(event) {
 
     event.preventDefault();
@@ -32,11 +38,11 @@ class HomePage extends React.Component {
     });
   }
 
-  render() {
-    return (
-      <div className="container-fluid">
-        <Header loading={this.props.loading} onLogout={this.doLogOut}/>
-        {this.props.children}
+  render() {    
+    return (           
+      <div className="container-fluid">        
+        <Header loading={this.props.loading} onLogout={this.doLogOut} user={this.state.user} />
+        {this.props.children} 
       </div>
     );
   }
@@ -53,7 +59,7 @@ HomePage.contextTypes = {
   router: PropTypes.object
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state, ownProps) {  
   return {
     loading: state.ajaxCallsInProgress > 0
   };

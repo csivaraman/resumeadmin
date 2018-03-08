@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
-import resumes from './../data/resume-data';
+import resumesData from './../data/resume-data';
 
-export default function resumeReducer(state = resumes, action) {    
+export default function resumeReducer(state = resumesData.resumes, action) {    
     switch (action.type) {
         case types.LOAD_RESUMES_SUCCESS:
             return action.resumes;

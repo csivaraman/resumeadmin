@@ -9,9 +9,9 @@ let bcrypt = require('bcryptjs');
 
 class LoginApi {
 
-    static isAuthenticated() {
+    static getAuthenticatedUser() {
         let user = JSON.parse(localStorage.getItem('user')) || null;
-        return user != null;
+        return user;
     }
 
     static register(newUser) {

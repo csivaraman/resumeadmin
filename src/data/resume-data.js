@@ -1,4 +1,5 @@
-let resumes = [{
+let resumesData = {
+  resumes: [{
     id: 1,
     title: 'Chandrasekar\'s Resume',
     description: 'Resume for Software Engineer role',
@@ -126,6 +127,7 @@ let resumes = [{
         ]
       }  
     ]
-  }];
+  }]
+};
   
-  export default resumes;
+  export default resumesData;

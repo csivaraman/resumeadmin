@@ -3,7 +3,7 @@ import { Link, IndexLink } from 'react-router';
 import LoadingDots from './../common/LoadingDots';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-const Header = ({ loading, onLogout }) => {
+const Header = ({ loading, onLogout, user }) => {
   return (
     <Navbar collapseOnSelect fluid staticTop>
       <Navbar.Header>
@@ -22,7 +22,7 @@ const Header = ({ loading, onLogout }) => {
           </NavItem>
         </Nav>
         <Nav pullRight>
-          <NavDropdown eventKey={3} title="csivaraman" id="basic-nav-dropdown">
+          <NavDropdown eventKey={3} title={user?user.username:'NOT FOUND'} id="basic-nav-dropdown">
             <MenuItem eventKey={3.1} onClick={onLogout}>
               Logout
             </MenuItem>
@@ -35,7 +35,8 @@ const Header = ({ loading, onLogout }) => {
 
 Header.propTypes = {
   loading: PropTypes.bool.isRequired,
-  onLogout: PropTypes.func
+  onLogout: PropTypes.func,
+  user: PropTypes.object.isRequired
 };
 
 export default Header;
