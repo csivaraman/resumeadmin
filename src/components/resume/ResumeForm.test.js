@@ -1,7 +1,6 @@
 import expect from 'expect';
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import TestUtils from 'react-addons-test-utils';
 import ResumeForm from './ResumeForm';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
