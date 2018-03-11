@@ -14,11 +14,11 @@ const Header = ({ loading, onLogout, user }) => {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem href="/index/resumes">
+          <NavItem>
             <Link to="/index/resumes"> Resumes </Link>
           </NavItem>
           <NavItem eventKey={2}>
-            {loading && <LoadingDots interval={100} dots={20} />}
+            {loading=='true' && <LoadingDots interval={100} dots={20} />}
           </NavItem>
         </Nav>
         <Nav pullRight>

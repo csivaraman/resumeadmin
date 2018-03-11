@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as loginActions from '../../actions/loginActions';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import toastr from 'toastr';
 import TextInput from './../common/TextInput';
 import { required, passwordMatch } from './../common/Validators';
 
@@ -24,15 +23,15 @@ class RegisterForm extends React.Component {
     }        
 
     onSubmit(user) {
-        const { firstname, lastname, username, password, passwordConfirm } = user;
+        const { username, password, passwordConfirm } = user;
 
         if (!this.registerFormIsValid(user))
             return;
 
-        if (firstname && lastname && username && password && passwordConfirm) {
+        if (username && password && passwordConfirm) {
             return this.props.actions.register(user).then(
                 () => this.redirect()).catch(error => {                    
-                    toastr.error(error);                    
+                    throw new SubmissionError({_error: error});        
                 });
         }
     }
@@ -45,23 +44,7 @@ class RegisterForm extends React.Component {
 
         return (
             <form id="registerform" onSubmit={handleSubmit(this.onSubmit)}>
-                <h1>Register</h1>
-                <Field
-                    label="First Name"
-                    name="firstname"
-                    component={TextInput}
-                    type="text"
-                    placeholder="john"
-                    validate={required}
-                />
-                <Field
-                    label="Last Name"
-                    name="lastname"
-                    component={TextInput}
-                    type="text"
-                    placeholder="doe"
-                    validate={required}
-                />
+                <h1>Register</h1>               
                 <Field
                     label="Username"
                     name="username"
@@ -102,7 +85,7 @@ class RegisterForm extends React.Component {
 }
 
 RegisterForm.propTypes = {
-    error: PropTypes.object.isRequired,
+    error: PropTypes.object,
     pristine: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,    
     submitting: PropTypes.bool.isRequired,

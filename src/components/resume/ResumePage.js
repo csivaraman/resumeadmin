@@ -107,7 +107,7 @@ class ResumePage extends React.Component {
 
 ResumePage.propTypes = {
   resumes: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

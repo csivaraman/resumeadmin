@@ -69,7 +69,7 @@ LoginForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,   
     submitting: PropTypes.bool.isRequired,
-    error: PropTypes.object.isRequired,
+    error: PropTypes.object,
     actions: PropTypes.object.isRequired
 
 };
