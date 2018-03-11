@@ -6,7 +6,7 @@ import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 const Header = ({ loading, onLogout, user }) => {
   return (
     <Navbar collapseOnSelect fluid staticTop>
-      <Navbar.Header>
+      <Navbar.Header>        
         <Navbar.Brand>
           <Link to="/">Resume Admin</Link>
         </Navbar.Brand>
